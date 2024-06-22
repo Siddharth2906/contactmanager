@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{contact::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<body>
+    <section>
+   <div class="card">
+       <div class="card-body">
+        <h1 class="text-center"> <i class="fas fa-user-plus me-lg-3"></i>Add Contact
+        </h1>
+       
+        <!-- <div th:if="${param.error}">
+            <div class="alert alert-danger text-center">
+                Something Went Wrong. Please try again.!!
+            </div>
+        </div>
+        <div th:if="${param.success}">
+            <div class="alert alert-success text-center">
+               Contact are added Successfully!!
+            </div>
+        </div> -->
+        <div  th:if="${message}">
+            <div th:classappend="${'alert-'+ type}" class="alert text-center" role="alert">
+              <span th:text="${message}"></span>
+            </div>
+            
+            <!-- <th:block th:text="${#session.removeAttribute(message)}"></th:block> -->
+        
+          </div>
+
+        <div class="container-fluid mt-1"></div>
+        
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <form action="#" th:action="@{/process-contact}" method="post" th:object="${contact}" enctype="multipart/form-data" class="mt-2">
+               <div class="input-group mt-3">
+                <div class="input-group-prepand">
+
+                    <div class="input-group-text ">
+
+                        <i class="fas fa-plus"></i>
+                      
+                    </div>
+                </div>
+                <input type="text" name="cname" placeholder=" Enter Name here" class="form-control ">
+               </div>
+               <!-- ---------------------- -->
+               <div class="input-group mt-3">
+                <div class="input-group-prepand mr-3">
+
+                    <div class="input-group-text ">
+
+                        <i class="fas fa-user"></i>
+                      
+                    </div>
+                </div>
+                <input type="text" name="nickname" placeholder=" Enter Name here" class="form-control ">
+               </div>
+               <!-- ----------- -->
+               <div class="input-group mt-3">
+                <div class="input-group-prepand mr-3">
+
+                    <div class="input-group-text ">
+
+                        <i class="fas fa-phone"></i>
+                        
+                      
+                    </div>
+                </div>
+                <input type="text" name="mobile_no" placeholder=" Enter Mobile No" class="form-control ">
+               </div>
+               
+               <!-- ---- -->
+               <div class="input-group mt-3">
+                <div class="input-group-prepand mr-3">
+
+                    <div class="input-group-text ">
+
+                        <i class="fas ">@</i>
+
+                      
+                    </div>
+                </div>
+                <input type="text" name="email" placeholder=" Enter Email here" class="form-control ">
+               </div>
+               <!-- -------- -->
+               <div class="input-group mt-3">
+                <div class="input-group-prepand mr-3">
+
+                    <div class="input-group-text ">
+
+                        <i class="fas fa-briefcase "></i>
+
+                      
+                    </div>
+                </div>
+                <input type="text" name="work" placeholder=" Enter  Work here" class="form-control ">
+               </div>
+               <!-- ----------------- -->
+              
+                <div class="form-group mt-3">
+
+                    <textarea name="description" placeholder=" " rows="10" id="mytextarea" class="form-control"></textarea>
+               </div>
+
+               <div class="custom-file mt-3">
+              <input type="file" name="pimage">
+               </div>
+                <div class="text-center">
+               <button type="submit" class=" btn btn-outline-primary mt-3 "> Save Contact</button>
+               </div>
+                </form>
+
+            </div>
+        </div>
+       </div>
+   </div>
+   <script src="https://cdn.tiny.cloud/1/r474nth4pmoty10mrx1i1bqmv0g98h4yu9n1eck6iesuvw4i/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+   <script>
+    tinymce.init({
+      selector: '#mytextarea'
+    });
+  </script>
+    </section>
+</body>
+</html>

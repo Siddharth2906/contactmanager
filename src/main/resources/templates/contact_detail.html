@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{contact::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<body>
+    <section>
+        <div class="card text-center" th:if="${contact}">
+            <div class="card-body text-center">
+                <img class="mb-3" width="200px" height="200px" style="border-radius: 50%;" th:src="${'/img/'+ contact.cimage}" alt="">
+               
+                <h4><span th:text="${contact.cname}"></span>(<span th:text="${contact.nickname}"></span>)</h4>
+                <br>
+                <table class="table mt-3">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col"><span th:text="${contact.cid}"></span></th>
+                      
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr >
+                        <th scope="row"><span>Email</span></th>
+                        <td ><span th:text="${contact.email}"></span></td>
+                       
+            
+                      </tr>
+                      <tr >
+                        <th scope="row"><span>mobile_no</span></th>
+                        <td ><span th:text="${contact.mobile_no}"></span></td>
+                       
+            
+                      </tr>
+                      <tr >
+                        <th scope="row"><span>Work</span></th>
+                        <td ><span th:text="${contact.work}"></span></td>
+                       
+            
+                      </tr>
+                      
+                    </tbody>
+                    
+                  </table> 
+                  <div class="description">
+                    <th:block th:utext="${contact.description}">
+
+                    </th:block>
+                  </div>
+                </div>    
+            </div>
+            <!-- <div th:unless="${contact}" class="text-center">
+             <h1>Please login valid user</h1>
+            </div> -->
+    </section>
+</body>
