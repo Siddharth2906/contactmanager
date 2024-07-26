@@ -8,19 +8,31 @@ import org.springframework.data.annotation.ReadOnlyProperty;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
+import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 
 @Document(collection = "contacts")
 public class Contact {
     @Id
     ObjectId cid;
 
-   
+    @NotBlank(message = "please enter name")
     private String cname;
+    @NotBlank(message = "please enter nickname")
     private String nickname;
+    @Email(regexp = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$",message = " email invalid")
     private String email;
+    @Digits(integer = 10,fraction = 0,message = "please enter valid number")
     private long mobile_no;
+    @NotEmpty(message = "please write work")
     private String work;
     private String cimage;
+    @NotEmpty(message = "please write about something")
     private String description;
    
 

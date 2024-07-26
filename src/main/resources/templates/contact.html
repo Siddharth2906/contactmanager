@@ -14,6 +14,8 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
+    
+
     @media only screen and (max-width:600px) {
       .sidebar {
         width: 80% !important;
@@ -95,6 +97,7 @@
         <!-- <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg> -->
         <span class="fs-3 text-white mb-2">Contact Manager</span>
       </a>
+      <span class="fs-3 mb-2 " style="color:dimgray; font-weight: 500;" > Login User: <span  class="fs-3  mb-2 " th:text="${user.name}"></span></span>
       <form class="" role="search">
         <!-- <h1 th:text="${}"></h1> -->
       </form>
@@ -107,15 +110,15 @@
     <a href="/contact"><i class="fa-solid fa-house"></i> Home</a>
     <a href="/show_contact/0"><i class="fa-solid fa-eye"></i> View Contact</a>
     <a href="/add-contact"><i class="fa-solid fa-user-plus"></i> Add Contact</a>
-    <a href="#"><i class="fa-solid fa-user"></i> Your Profile</a>
+    <a href="/user-profile"><i class="fa-solid fa-user"></i> Your Profile</a>
     <a href="#"><i class="fa-solid fa-gears"></i> Setting</a>
-    <a href="#"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    <a href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
   </div>
 
   <div class="main-content" id="main-content">
     <i onclick="togglesidebar()" class="fas fa-bars m-3"></i>
    
-    <div  th:replace="${content}">
+    <div class="content" th:replace="${content}">
     
 
 

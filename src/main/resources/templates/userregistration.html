@@ -38,13 +38,25 @@
     <section class="vh-100">
         <div class="container-fluid h-custom">
             <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-md-9 col-lg-6 col-xl-5">
+
+                <div class="col-md-9 col-lg-6 col-xl-5 mb-">
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
                         class="img-fluid" alt="Sample image">
                 </div>
 
 
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+
+
+                    <div th:if="${message}">
+                        <div th:classappend="${'alert-'+ type}" class="alert text-center mb-4 mt-2" role="alert">
+                            <span th:text="${message}"></span>
+                        </div>
+
+                        <!-- <th:block th:text="${#session.removeAttribute(message)}"></th:block> -->
+
+                    </div>
+
                     <form th:action="@{/register}" th:object="${user}" method="post">
                         <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
                             <p class="lead fw-normal mb-0 me-3">Register</p>
@@ -64,28 +76,31 @@
                             </button>
                         </div>
 
-        <hr class="d-flex align-items-center my-4">
+                        <hr class="d-flex align-items-center my-4">
                         <!-- Email input -->
                         <div data-mdb-input-init class="form-outline mb-4">
-                            <input type="email" id="form3Example3" th:field="*{email}" th:classappend="${#fields.hasErrors('email')?'is-invalid':''}"
-                                class="form-control form-control-lg" placeholder="Enter a valid email address"
-                                 />
+                            <input type="email" id="form3Example3" th:field="*{email}"
+                                th:classappend="${#fields.hasErrors('email')?'is-invalid':''}"
+                                class="form-control form-control-lg" placeholder="Enter a valid email address" />
                             <label class="form-label" for="form3Example3">Email address</label>
-                            <div  th:each="e:${#fields.errors('email')}"  th:text="${e}" class="invalid-feedback"></div>
+                            <div th:each="e:${#fields.errors('email')}" th:text="${e}" class="invalid-feedback"></div>
 
                         </div>
 
                         <div data-mdb-input-init class="form-outline mb-4">
-                            <input type="text" id="form3Example2" th:field="*{name}" th:classappend="${#fields.hasErrors('name')?'is-invalid':''}"
-                                class="form-control form-control-lg" placeholder="Enter a valid  username"  />
+                            <input type="text" id="form3Example2" th:field="*{name}"
+                                th:classappend="${#fields.hasErrors('name')?'is-invalid':''}"
+                                class="form-control form-control-lg" placeholder="Enter a valid  username" />
                             <label class="form-label" for="form3Example2">User name</label>
-                            <div  th:each="e:${#fields.errors('name')}"  th:text="${e}" class="invalid-feedback"></div>
+                            <div th:each="e:${#fields.errors('name')}" th:text="${e}" class="invalid-feedback"></div>
                         </div>
                         <div data-mdb-input-init class="form-outline mb-4">
-                            <input type="password" id="form3Example1" th:field="*{password}" th:classappend="${#fields.hasErrors('password')?'is-invalid':''}"
+                            <input type="password" id="form3Example1" th:field="*{password}"
+                                th:classappend="${#fields.hasErrors('password')?'is-invalid':''}"
                                 class="form-control form-control-lg" placeholder="Enter a password" />
                             <label class="form-label" for="form3Example1">Password</label>
-                            <div  th:each="e:${#fields.errors('password')}"  th:text="${e}" class="invalid-feedback"></div>
+                            <div th:each="e:${#fields.errors('password')}" th:text="${e}" class="invalid-feedback">
+                            </div>
 
                         </div>
                         <!-- <div data-mdb-input-init class="form-outline mb-4">
@@ -114,10 +129,11 @@
                         </div>
                          -->
                         <div data-mdb-input-init class="form-outline mb-4">
-                            <textarea name="about" rows="5" id="form3Example4" th:classappend="${#fields.hasErrors('about')?'is-invalid':''}"
-                             class="form-control form-control-lg" placeholder="write about something"></textarea>
+                            <textarea name="about" rows="5" id="form3Example4"
+                                th:classappend="${#fields.hasErrors('about')?'is-invalid':''}"
+                                class="form-control form-control-lg" placeholder="write about something"></textarea>
                             <label class="form-label" for="form3Example4">About</label>
-                            <div  th:each="e:${#fields.errors('about')}"  th:text="${e}" class="invalid-feedback"></div>
+                            <div th:each="e:${#fields.errors('about')}" th:text="${e}" class="invalid-feedback"></div>
 
                         </div>
 
@@ -125,13 +141,15 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <!-- Checkbox -->
                             <div class="form-check mb-0">
-                                <input class="form-check-input me-2" th:classappend="${#fields.hasErrors('check')?'is-invalid':''}" type="checkbox" th:name="check"
-                                    id="form2Example3" />
+                                <input class="form-check-input me-2"
+                                    th:classappend="${#fields.hasErrors('check')?'is-invalid':''}" type="checkbox"
+                                    th:name="check" id="form2Example3" />
 
                                 <label class="form-check-label" for="form2Example3">
                                     Confirm details
                                 </label>
-                                <div  th:each="e:${#fields.errors('check')}"  th:text="${e}" class="invalid-feedback"></div>
+                                <div th:each="e:${#fields.errors('check')}" th:text="${e}" class="invalid-feedback">
+                                </div>
 
                             </div>
                             <a href="#!" class="text"></a>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{contact::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<body>
+    <section>
+        <div class="card text-center" th:if="${user}">
+            <div class="card-body text-center">
+                
+             <img class="mb-3" width="200px" height="200px" onclick="" style="border-radius: 50%;" ondblclick="" th:src="${'/img/'+ user.image}" alt="">
+         
+                <h4><span th:text="${user.name}"></span></h4>
+                <br>
+                <table class="table mt-3">
+                    <thead>
+                      <tr>
+                        <th scope="col">User Id</th>
+                        <th scope="col"><span th:text="${user.id}"></span></th>
+                      
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr >
+                        <th scope="row"><span>Email</span></th>
+                        <td ><span th:text="${user.email}"></span></td>
+                       
+            
+                      </tr>
+                      <tr >
+                        <th scope="row"><span>Name</span></th>
+                        <td ><span th:text="${user.name}"></span></td>
+                       
+            
+                      </tr>
+                      <tr >
+                        <th scope="row"><span>Role</span></th>
+                        <!-- <td ><span th:text="${user.roleId.contains(10001) && user.roleId.contains(10000)?'Admin,User':user.roleId.contains(10001) ?'Admin':'User'}"></span></td> -->
+                        <span th:each="r:${role}">
+                          <td><span th:text="${r.id==10001?'Admin':'User'}"></span></td>
+                        </span>
+
+            
+                      </tr>
+                      <tr >
+                        <th scope="row"><span>Status</span></th>
+                        <td ><span th:text="${user.enable}"></span></td>
+                       
+            
+                      </tr>
+                      
+                    </tbody>
+                    
+                  </table> 
+                 
+                </div>   
+                <div>
+                  <form action="" th:action="@{/update-u}" method="post" enctype="multipart/form-data" class="mt-2" >
+                  
+                    <input type="file" name="uimage"  >
+                    <button
+                      type="submit"
+                      class="btn btn-primary"
+                    >
+                      Submit
+                    </button>
+                    
+                  </form>
+                  
+                            </div> 
+            </div>
+         
+  
+           
+    </section>
+</body>

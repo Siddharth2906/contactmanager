@@ -38,8 +38,8 @@ public interface ContactRepo extends MongoRepository<Contact,ObjectId>{
    
 //    public Page <Contact> findByUser(User user ,PageRequest p);
 
-@Query("form Contact as c where c.cid:Id")
-Page <Contact> findAllContactsByUserId(ObjectId userId,PageRequest p);
+// @Query("form Contact as c where c.cid:Id")
+// Page <Contact> findAllContactsByUserId(ObjectId userId,PageRequest p);
 
 Page <Contact> findByUser(User user ,PageRequest p);
  
